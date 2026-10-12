@@ -107,6 +107,8 @@ Ao alterar conteúdo, mantenha os atributos ARIA e os textos alternativos coeren
 
 ## Publicação (Netlify)
 
+**Site publicado:** <https://viva-em-equilibrio.netlify.app/>
+
 O deploy é contínuo: cada push na branch `main` publica automaticamente.
 
 **Primeira publicação (pelo painel):**
@@ -116,7 +118,7 @@ O deploy é contínuo: cada push na branch `main` publica automaticamente.
 3. Configure:
    - **Build command:** deixe vazio
    - **Publish directory:** `.` (raiz do projeto)
-4. Clique em **Deploy site**. O site fica em `https://SEU-SITE.netlify.app`.
+4. Clique em **Deploy site**. O site fica em `https://viva-em-equilibrio.netlify.app`.
 
 As configurações de build e os cabeçalhos de segurança já estão em `netlify.toml`,
 então o painel normalmente preenche tudo sozinho.
