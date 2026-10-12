@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portal educativo Viva em Equilíbrio: informação baseada em evidências sobre canetas emagrecedoras, riscos, procedência, cuidado multiprofissional e fontes confiáveis." />
+  <meta name="theme-color" content="#D94F83" />
+  <meta name="color-scheme" content="light" />
+  <title>Viva em Equilíbrio — Informação antes da decisão</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="pular-link" href="#conteudo">Pular para o conteúdo principal</a>
+
+  <!-- Aviso educativo obrigatório (fixo no topo, dispensável) -->
+  <div class="aviso-topo" id="aviso-topo" role="region" aria-label="Aviso educativo obrigatório">
+    <div class="container aviso-topo__interno">
+      <p class="aviso-topo__texto">
+        <strong>Este portal tem finalidade educativa</strong> e não substitui consulta médica,
+        nutricional ou farmacêutica. Medicamentos para controle de peso exigem avaliação
+        individual e devem ser utilizados conforme orientação de profissional habilitado e
+        regras sanitárias aplicáveis. Em caso de dúvidas sobre um tratamento, procure a equipe
+        de saúde responsável.
+      </p>
+      <button type="button" class="aviso-topo__fechar" id="fechar-aviso" aria-label="Ocultar aviso educativo">
+        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <header class="cabecalho" id="topo">
+    <div class="container cabecalho__interno">
+      <a class="marca" href="#inicio" data-tab-link="inicio">
+        <span class="marca__simbolo" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" focusable="false">
+            <path d="M12 21s-7.5-4.7-9.6-9.1C.9 8.6 2.4 5 5.7 4.4c2-.4 3.9.6 4.9 2.3a.4.4 0 0 0 .7 0c1-1.7 2.9-2.7 4.9-2.3 3.3.6 4.8 4.2 3.3 7.5C19.5 16.3 12 21 12 21z" fill="currentColor" />
+          </svg>
+        </span>
+        <span class="marca__texto">Viva em <span class="marca__destaque">Equilíbrio</span></span>
+      </a>
+
+      <button
+        type="button"
+        class="hamburguer"
+        id="botao-menu"
+        aria-expanded="false"
+        aria-controls="menu-principal"
+        aria-label="Abrir menu de navegação"
+      >
+        <span class="hamburguer__barra" aria-hidden="true"></span>
+        <span class="hamburguer__barra" aria-hidden="true"></span>
+        <span class="hamburguer__barra" aria-hidden="true"></span>
+      </button>
+
+      <nav class="navegacao" id="menu-principal" aria-label="Navegação principal">
+        <ul class="navegacao__lista" role="tablist" aria-label="Seções do portal">
+          <li role="presentation">
+            <button type="button" class="aba" id="aba-inicio" role="tab"
+              aria-selected="true" aria-controls="painel-inicio" tabindex="0">
+              Início
+            </button>
+          </li>
+          <li role="presentation">
+            <button type="button" class="aba" id="aba-canetas" role="tab"
+              aria-selected="false" aria-controls="painel-canetas" tabindex="-1">
+              Entenda as Canetas
+            </button>
+          </li>
+          <li role="presentation">
+            <button type="button" class="aba" id="aba-cuidado" role="tab"
+              aria-selected="false" aria-controls="painel-cuidado" tabindex="-1">
+              Cuidado e Acompanhamento
+            </button>
+          </li>
+          <li role="presentation">
+            <button type="button" class="aba" id="aba-biblioteca" role="tab"
+              aria-selected="false" aria-controls="painel-biblioteca" tabindex="-1">
+              Biblioteca
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+
+    <!-- ============================= ABA 1: INÍCIO ============================= -->
+    <section class="painel" id="painel-inicio" role="tabpanel" aria-labelledby="aba-inicio" tabindex="0">
+
+      <div class="hero">
+        <div class="container hero__interno">
+          <div class="hero__conteudo">
+            <p class="hero__etiqueta">Informação baseada em evidências</p>
+            <h1 class="hero__titulo">Canetas emagrecedoras: <span class="hero__titulo-destaque">informação antes da decisão.</span></h1>
+            <p class="hero__subtitulo">
+              Entenda as promessas nas redes e o valor da avaliação individual.
+            </p>
+            <div class="hero__acoes">
+              <button type="button" class="botao botao--primario" data-tab-link="canetas">
+                Entenda as canetas
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <button type="button" class="botao botao--secundario" data-tab-link="biblioteca">
+                Explorar a Biblioteca
+              </button>
+            </div>
+          </div>
+          <div class="hero__arte" aria-hidden="true">
+            <div class="hero__circulo hero__circulo--1"></div>
+            <div class="hero__circulo hero__circulo--2"></div>
+            <div class="hero__cartao">
+              <span class="hero__cartao-icon">
+                <svg width="34" height="34" viewBox="0 0 24 24" focusable="false">
+                  <path d="M4 7l16-3v14l-16 3V7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                  <path d="M8 6.7v11.6" fill="none" stroke="currentColor" stroke-width="2" />
+                </svg>
+              </span>
+              <p class="hero__cartao-titulo">Avaliação individual</p>
+              <p class="hero__cartao-texto">Cada organismo responde de forma diferente. A decisão é clínica, não de rede social.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+
+        <!-- Aviso educativo em destaque -->
+        <aside class="bloco-aviso" role="note" aria-label="Aviso educativo">
+          <span class="bloco-aviso__icone" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+              <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" />
+              <path d="M12 7.3v6.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+              <circle cx="12" cy="17" r="1.3" fill="currentColor" />
+            </svg>
+          </span>
+          <p class="bloco-aviso__texto">
+            <strong>Aviso educativo:</strong> este conteúdo não recomenda medicamentos nem
+            substitui a avaliação de um profissional habilitado. Toda informação aqui é de
+            caráter educativo e preventivo.
+          </p>
+        </aside>
+
+        <!-- Três caminhos de leitura -->
+        <section class="secao" aria-labelledby="titulo-caminhos">
+          <header class="secao__cabecalho">
+            <h2 class="secao__titulo" id="titulo-caminhos">Três caminhos de leitura</h2>
+            <p class="secao__descricao">Escolha por onde começar a sua jornada de informação.</p>
+          </header>
+
+          <div class="grade grade--tres">
+            <article class="cartao cartao--caminho">
+              <span class="cartao__icone" aria-hidden="true">
+                <svg width="30" height="30" viewBox="0 0 24 24" focusable="false">
+                  <path d="M4 5.5h7v15H4zM13 5.5h7v15h-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                  <path d="M6.5 9h2M15.5 9h2M6.5 12.5h2M15.5 12.5h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                </svg>
+              </span>
+              <h3 class="cartao__titulo">O que são e quais cuidados?</h3>
+              <p class="cartao__texto">Visão geral, indicações específicas, riscos, contraindicações e a importância do acompanhamento profissional.</p>
+              <button type="button" class="link-acao" data-tab-link="canetas">
+                Ir para Entenda as Canetas
+                <span aria-hidden="true">→</span>
+              </button>
+            </article>
+
+            <article class="cartao cartao--caminho">
+              <span class="cartao__icone" aria-hidden="true">
+                <svg width="30" height="30" viewBox="0 0 24 24" focusable="false">
+                  <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2" />
+                  <path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+                  <path d="M8 11h6M11 8v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                </svg>
+              </span>
+              <h3 class="cartao__titulo">Como avaliar informações nas redes?</h3>
+              <p class="cartao__texto">Aprenda a reconhecer promessas milagrosas, depoimentos e conteúdos sem evidência científica confiável.</p>
+              <button type="button" class="link-acao" data-tab-link="canetas">
+                Ver mitos e verdades
+                <span aria-hidden="true">→</span>
+              </button>
+            </article>
+
+            <article class="cartao cartao--caminho">
+              <span class="cartao__icone" aria-hidden="true">
+                <svg width="30" height="30" viewBox="0 0 24 24" focusable="false">
+                  <path d="M12 21s-7-4.4-9-8.6C1.4 9.2 3 5.9 6.2 5.4c1.9-.3 3.7.7 4.6 2.2a.3.3 0 0 0 .5 0c.9-1.5 2.7-2.5 4.6-2.2 3.2.5 4.7 3.8 3.2 7C17 16.6 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                </svg>
+              </span>
+              <h3 class="cartao__titulo">Por que buscar acompanhamento?</h3>
+              <p class="cartao__texto">Entenda o papel de cada profissional de saúde e como o cuidado contínuo protege a sua saúde.</p>
+              <button type="button" class="link-acao" data-tab-link="cuidado">
+                Conhecer o cuidado
+                <span aria-hidden="true">→</span>
+              </button>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ======================= ABA 2: ENTENDA AS CANETAS ======================= -->
+    <section class="painel" id="painel-canetas" role="tabpanel" aria-labelledby="aba-canetas" tabindex="0" hidden>
+      <div class="container secao-pagina">
+
+        <nav class="subnav" aria-label="Subáreas de Entenda as Canetas">
+          <a href="#canetas-visao">Visão Geral</a>
+          <a href="#canetas-riscos">Riscos e Cuidados</a>
+          <a href="#canetas-procedencia">Procedência</a>
+          <a href="#canetas-mitos">Mitos e Verdades</a>
+          <a href="#canetas-quiz">Quiz Educativo</a>
+        </nav>
+
+        <header class="pagina__cabecalho">
+          <p class="pagina__etiqueta">Tema central</p>
+          <h1 class="pagina__titulo">Entenda as Canetas</h1>
+          <p class="pagina__descricao">
+            Informação educativa sobre medicamentos injetáveis usados no controle de peso —
+            sem promessas e sem recomendar produtos.
+          </p>
+        </header>
+
+        <aside class="bloco-aviso bloco-aviso--alerta" role="note">
+          <span class="bloco-aviso__icone" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+              <path d="M12 3l9.5 17H2.5L12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+              <path d="M12 9.5v4.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+              <circle cx="12" cy="17.2" r="1.2" fill="currentColor" />
+            </svg>
+          </span>
+          <p class="bloco-aviso__texto">
+            <strong>Não inicie, interrompa ou altere tratamento por conta própria.</strong>
+            Decisões sobre medicamentos devem ser tomadas com um profissional habilitado.
+          </p>
+        </aside>
+
+        <!-- Visão Geral -->
+        <section class="secao" id="canetas-visao" aria-labelledby="titulo-visao">
+          <header class="secao__cabecalho">
+            <h2 class="secao__titulo" id="titulo-visao">Visão geral</h2>
+          </header>
+          <div class="texto-longos">
+            <p>
+              As chamadas “canetas emagrecedoras” são formas de apresentação de medicamentos
+              injetáveis que atuam em mecanismos ligados ao apetite e ao metabolismo. Elas não
+              são produtos de uso geral nem itens de bem-estar: são medicamentos sujeitos a
+              regras sanitárias e que exigem <strong>indicação específica</strong>.
+            </p>
+            <p>
+              A indicação depende de uma <strong>avaliação individual</strong>. Fatores como
+              histórico de saúde, outras condições clínicas, uso de outros medicamentos e
+              objetivos do tratamento precisam ser analisados por um profissional habilitado.
+              O que funciona para uma pessoa pode não ser adequado — nem seguro — para outra.
+            </p>
+            <div class="destaque-lista">
+              <h3 class="destaque-lista__titulo">O que a avaliação individual considera</h3>
+              <ul class="lista-marcada">
+                <li>Histórico clínico e condições de saúde associadas.</li>
+                <li>Uso de outros medicamentos e possíveis interações.</li>
+                <li>Contraindicações e fatores de risco pessoais.</li>
+                <li>Acompanhamento, exames e monitoramento ao longo do tempo.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Riscos e Cuidados (acordeão) -->
+        <section class="secao" id="canetas-riscos" aria-labelledby="titulo-riscos">
+          <header class="secao__cabecalho">
+            <h2 class="secao__titulo" id="titulo-riscos">Riscos e cuidados</h2>
+            <p class="secao__descricao">Toque em cada item para expandir. Estas informações são educativas e não substituem a bula nem a orientação profissional.</p>
+          </header>
+
+          <div class="acordeao" data-acordeao>
+            <div class="acordeao__item">
+              <h3 class="acordeao__cabecalho">
+                <button type="button" class="acordeao__gatilho" aria-expanded="false" aria-controls="risco-1" id="risco-1-gatilho">
+                  <span>Efeitos adversos</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="risco-1" role="region" aria-labelledby="risco-1-gatilho" hidden>
+                <p>
+                  Como qualquer medicamento, podem ocorrer reações indesejadas. A intensidade e
+                  o tipo variam de pessoa para pessoa. Somente um profissional pode avaliar se os
+                  benefícios superam os riscos no seu caso e como monitorá-los. Não busque
+                  orientação sobre reações em redes sociais: procure a equipe de saúde.
+                </p>
+              </div>
+            </div>
+
+            <div class="acordeao__item">
+              <h3 class="acordeao__cabecalho">
+                <button type="button" class="acordeao__gatilho" aria-expanded="false" aria-controls="risco-2" id="risco-2-gatilho">
+                  <span>Contraindicações</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="risco-2" role="region" aria-labelledby="risco-2-gatilho" hidden>
+                <p>
+                  Existem situações em que o uso não é indicado. Essas condições precisam ser
+                  identificadas por quem avalia e acompanha o tratamento. É por isso que o uso
+                  sem indicação e sem acompanhamento é considerado inseguro.
+                </p>
+              </div>
+            </div>
+
+            <div class="acordeao__item">
+              <h3 class="acordeao__cabecalho">
+                <button type="button" class="acordeao__gatilho" aria-expanded="false" aria-controls="risco-3" id="risco-3-gatilho">
+                  <span>Interações medicamentosas</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="risco-3" role="region" aria-labelledby="risco-3-gatilho" hidden>
+                <p>
+                  Outros medicamentos em uso podem interferir no efeito e na segurança do
+                  tratamento. Sempre informe à equipe de saúde tudo o que você utiliza, incluindo
+                  suplementos e produtos de origem natural.
+                </p>
+              </div>
+            </div>
+
+            <div class="acordeao__item">
+              <h3 class="acordeao__cabecalho">
+                <button type="button" class="acordeao__gatilho" aria-expanded="false" aria-controls="risco-4" id="risco-4-gatilho">
+                  <span>Importância do acompanhamento</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="risco-4" role="region" aria-labelledby="risco-4-gatilho" hidden>
+                <p>
+                  O acompanhamento permite ajustes, monitoramento de efeitos e detecção precoce
+                  de problemas. Tratamento sério é tratamento acompanhado.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p class="aviso-inline">
+            <strong>Lembrete:</strong> não inicie, interrompa ou altere tratamento por conta própria.
+          </p>
+        </section>
+
+        <!-- Procedência e Autenticidade -->
+        <section class="secao secao--destaque" id="canetas-procedencia" aria-labelledby="titulo-procedencia">
+          <header class="secao__cabecalho">
+            <h2 class="secao__titulo" id="titulo-procedencia">Original, falsificada ou irregular: como verificar?</h2>
+            <p class="secao__descricao">Aparência e QR code, isoladamente, não garantem autenticidade.</p>
+          </header>
+
+          <div class="grade grade--dois">
+            <div class="cartao cartao--verificacao">
+              <h3 class="cartao__titulo">Checklist de verificação</h3>
+              <ul class="lista-marcada lista-marcada--numerada">
+                <li><strong>Estabelecimento e nota fiscal:</strong> compra em local licenciado, com documentação.</li>
+                <li><strong>Registro na Anvisa:</strong> confira o registro do produto nos canais oficiais.</li>
+                <li><strong>Lote e lacres:</strong> verifique integridade da embalagem, lote e validade.</li>
+                <li><strong>Alertas oficiais:</strong> acompanhe comunicados e alertas sanitários publicados.</li>
+              </ul>
+            </div>
+            <div class="cartao cartao--atencao">
+              <h3 class="cartao__titulo">Atenção</h3>
+              <p class="cartao__texto">
+                Um QR code pode ser copiado e reaproveitado. Imagens bonitas, embalagens
+                impecáveis e “aparência de original” <strong>não garantem autenticidade</strong>.
+              </p>
+              <p class="cartao__texto">
+                Este portal é educativo e <strong>não autentica produtos por foto</strong>. Para
+                confirmar procedência, consulte os canais oficiais citados na
+                <button type="button" class="link-acao link-acao--inline" data-tab-link="biblioteca">Biblioteca</button>.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Mitos e Verdades -->
+        <section class="secao" id="canetas-mitos" aria-labelledby="titulo-mitos">
+          <header class="secao__cabecalho">
+            <h2 class="secao__titulo" id="titulo-mitos">Mitos e verdades</h2>
+            <p class="secao__descricao">Perguntas frequentes com respostas diretas.</p>
+          </header>
+
+          <div class="acordeao" data-acordeao>
+            <div class="acordeao__item">
+              <h3 class="acordeao__cabecalho">
+                <button type="button" class="acordeao__gatilho" aria-expanded="false" aria-controls="mito-1" id="mito-1-gatilho">
+                  <span>Depoimento comprova segurança?</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="mito-1" role="region" aria-labelledby="mito-1-gatilho" hidden>
+                <p><strong>Não.</strong> Um relato pessoal é uma experiência individual e não
+                  substitui evidências científicas. Depoimentos não comprovam segurança nem eficácia.</p>
+              </div>
+            </div>
+
+            <div class="acordeao__item">
+              <h3 class="acordeao__cabecalho">
+                <button type="button" class="acordeao__gatilho" aria-expanded="false" aria-controls="mito-2" id="mito-2-gatilho">
+                  <span>Serve para qualquer pessoa?</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="mito-2" role="region" aria-labelledby="mito-2-gatilho" hidden>
+                <p><strong>Não.</strong> A indicação é individual. O que é adequado para uma pessoa
+                  pode não ser para outra, por isso a avaliação profissional é indispensável.</p>
+              </div>
+            </div>
+
+            <div class="acordeao__item">
+              <h3 class="acordeao__cabecalho">
+                <button type="button" class="acordeao__gatilho" aria-expanded="false" aria-controls="mito-3" id="mito-3-gatilho">
+                  <span>Todo medicamento é ruim?</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="mito-3" role="region" aria-labelledby="mito-3-gatilho" hidden>
+                <p><strong>Não.</strong> Medicamentos podem ter indicação adequada quando usados
+                  com avaliação, prescrição e acompanhamento. O problema não é o medicamento em
+                  si, mas o uso sem critério.</p>
+              </div>
+            </div>
+
+            <div class="acordeao__item">
+              <h3 class="acordeao__cabecalho">
+                <button type="button" class="acordeao__gatilho" aria-expanded="false" aria-controls="mito-4" id="mito-4-gatilho">
+                  <span>Quanto mais rápido o resultado, melhor?</span>
+                  <span class="acordeao__seta" aria-hidden="true"></span>
+                </button>
+              </h3>
+              <div class="acordeao__painel" id="mito-4" role="region" aria-labelledby="mito-4-gatilho" hidden>
+                <p><strong>Não necessariamente.</strong> Promessas de resultados rápidos e garantidos
+                  são um sinal de alerta. Saúde não funciona com atalhos milagrosos nem com
+                  garantias de resultado.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Quiz Educativo -->
+        <section class="secao secao--quiz" id="canetas-quiz" aria-labelledby="titulo-quiz">
+          <header class="secao__cabecalho">
+            <h2 class="secao__titulo" id="titulo-quiz">Quiz educativo</h2>
+            <p class="secao__descricao">Teste o que você aprendeu. As respostas trazem uma explicação imediata.</p>
+          </header>
+
+          <div class="quiz" id="quiz" data-quiz>
+            <p class="quiz__progresso" id="quiz-progresso" aria-live="polite">Pergunta 1</p>
+            <div id="quiz-conteudo"></div>
+            <div class="quiz__rodape">
+              <button type="button" class="botao botao--secundario" id="quiz-reiniciar" hidden>Refazer o quiz</button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+    <!-- ================== ABA 3: CUIDADO E ACOMPANHAMENTO ================== -->
+    <section class="painel" id="painel-cuidado" role="tabpanel" aria-labelledby="aba-cuidado" tabindex="0" hidden>
+      <div class="container secao-pagina">
+
+        <header class="pagina__cabecalho">
+          <p class="pagina__etiqueta">Cuidado contínuo</p>
+          <h1 class="pagina__titulo">Cuidado e Acompanhamento</h1>
+          <p class="pagina__descricao">
+            Saúde se constrói com uma equipe — cada profissional tem um papel específico e
+            complementar no seu cuidado.
+          </p>
+        </header>
+
+        <aside class="bloco-aviso" role="note">
+          <span class="bloco-aviso__icone" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+              <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" />
+              <path d="M12 7.3v6.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+              <circle cx="12" cy="17" r="1.3" fill="currentColor" />
+            </svg>
+          </span>
+          <p class="bloco-aviso__texto">
+            <strong>Aviso educativo:</strong> este portal não realiza diagnóstico, prescrição
+            nem indicação de tratamento. Procure sempre profissionais habilitados.
+          </p>
+        </aside>
+
+        <!-- Papéis dos profissionais -->
+        <section class="secao" aria-labelledby="titulo-profissionais">
+          <header class="secao__cabecalho">
+            <h2 class="secao__titulo" id="titulo-profissionais">Quem faz o quê</h2>
+            <p class="secao__descricao">Profissionais habilitados e suas atribuições no cuidado.</p>
+          </header>
+
+          <div class="grade grade--quatro">
+            <article class="cartao cartao--profissional">
+              <span class="cartao__icone cartao__icone--medico" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" focusable="false">
+                  <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="none" stroke="currentColor" stroke-width="2" />
+                  <path d="M5 21c0-3.5 3.1-6 7-6s7 2.5 7 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <h3 class="cartao__titulo">Médico(a)</h3>
+              <p class="cartao__texto">Avaliação clínica, indicação, prescrição e condução do tratamento.</p>
+            </article>
+
+            <article class="cartao cartao--profissional">
+              <span class="cartao__icone cartao__icone--nutri" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" focusable="false">
+                  <path d="M12 21V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <path d="M12 9c0-3 2-5 6-5 0 3-2 5-6 5zM12 13c0-3-2-5-6-5 0 3 2 5 6 5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                </svg>
+              </span>
+              <h3 class="cartao__titulo">Nutricionista</h3>
+              <p class="cartao__texto">Orientação alimentar e acompanhamento nutricional individualizado.</p>
+            </article>
+
+            <article class="cartao cartao--profissional">
+              <span class="cartao__icone cartao__icone--farma" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" focusable="false">
+                  <rect x="4" y="7" width="16" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
+                  <path d="M9 7V5a3 3 0 0 1 6 0v2M12 11v5M9.5 13.5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <h3 class="cartao__titulo">Farmacêutico(a)</h3>
+              <p class="cartao__texto">Dúvidas sobre medicamentos, uso correto, armazenamento e procedência.</p>
+            </article>
+
+            <article class="cartao cartao--profissional">
+              <span class="cartao__icone cartao__icone--edfisica" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" focusable="false">
+                  <path d="M6.5 9v6M3.5 10.5v3M17.5 9v6M20.5 10.5v3M6.5 12h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </span>
+              <h3 class="cartao__titulo">Educação Física</h3>
+              <p class="cartao__texto">Movimento e treino conforme habilitação e condição individual.</p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Alimentação e movimento -->
+        <section class="secao" aria-labelledby="titulo-alimentacao">
+          <header class="secao__cabecalho">
+            <h2 class="secao__titulo" id="titulo-alimentacao">Alimentação e movimento</h2>
+            <p class="secao__descricao">Hábitos e atividade orientada como apoio ao cuidado — sem promessas clínicas.</p>
+          </header>
+
+          <div class="grade grade--dois">
+            <article class="cartao cartao--suave">
+              <h3 class="cartao__titulo">Alimentação</h3>
+              <p class="cartao__texto">
+                Uma alimentação equilibrada é construída com orientação profissional e respeita
+                a sua rotina, cultura e realidade. Este portal <strong>não oferece cardápios
+                prontos</strong> nem dietas milagrosas.
+              </p>
+              <ul class="lista-checada">
+                <li>Orientação individualizada com nutricionista.</li>
+                <li>Hábitos sustentáveis em vez de soluções extremas.</li>
+                <li>Sem promessas de resultado clínico.</li>
+              </ul>
+            </article>
+
+            <article class="cartao cartao--suave">
+              <h3 class="cartao__titulo">Movimento</h3>
+              <p class="cartao__texto">
+                A prática de atividade física orientada contribui para a saúde quando respeita os
+                limites e a condição de cada pessoa. Intensidade e modalidade devem ser definidas
+                por profissional habilitado.
+              </p>
+              <ul class="lista-checada">
+                <li>Treino conforme habilitação profissional.</li>
+                <li>Progressão cautelosa e individual.</li>
+                <li>Consistência importa mais que intensidade.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <!-- Perguntas para consulta -->
+        <section class="secao secao--destaque" aria-labelledby="titulo-perguntas">
+          <header class="secao__cabecalho">
+            <h2 class="secao__titulo" id="titulo-perguntas">Perguntas para levar à consulta</h2>
+            <p class="secao__descricao">Anote e converse com a equipe de saúde responsável.</p>
+          </header>
+
+          <ul class="lista-perguntas">
+            <li>Qual é a indicação no meu caso?</li>
+            <li>Quais riscos eu devo conhecer?</li>
+            <li>Existem contraindicações para mim?</li>
+            <li>Como será o acompanhamento e a frequência das avaliações?</li>
+            <li>Que sinais ou sintomas exigem contato imediato com a equipe?</li>
+            <li>Preciso ajustar algo na alimentação ou na rotina de atividade física?</li>
+          </ul>
+        </section>
+
+        <!-- Formulário de opinião (estático) -->
+        <section class="secao" aria-labelledby="titulo-opiniao">
+          <header class="secao__cabecalho">
+            <h2 class="secao__titulo" id="titulo-opiniao">Deixe sua opinião</h2>
+            <p class="secao__descricao">
+              Este é um formulário educativo estático. Ele não envia nem armazena dados e
+              <strong>não deve conter informações clínicas ou pessoais sensíveis</strong>.
+            </p>
+          </header>
+
+          <form class="formulario" id="formulario-opiniao" novalidate>
+            <div class="campo">
+              <label for="op-tipo">Tipo de mensagem</label>
+              <select id="op-tipo" name="tipo" required>
+                <option value="" selected disabled>Selecione uma opção</option>
+                <option value="sugestao">Sugestão de conteúdo</option>
+                <option value="duvida">Dúvida sobre navegação</option>
+                <option value="acessibilidade">Relato de acessibilidade</option>
+                <option value="outro">Outro assunto não clínico</option>
+              </select>
+            </div>
+
+            <div class="campo">
+              <label for="op-mensagem">Mensagem <span class="campo__obrigatorio" aria-hidden="true">*</span></label>
+              <textarea id="op-mensagem" name="mensagem" rows="5" required
+                aria-describedby="ajuda-mensagem"
+                placeholder="Escreva sua sugestão. Não inclua dados pessoais nem informações de saúde."></textarea>
+              <p class="campo__ajuda" id="ajuda-mensagem">
+                Máximo de 500 caracteres. Não compartilhe dados clínicos, exames ou receitas.
+              </p>
+            </div>
+
+            <div class="campo campo--check">
+              <input type="checkbox" id="op-consentimento" name="consentimento" required />
+              <label for="op-consentimento">
+                Entendo que este formulário é estático, educativo e não representa canal de
+                atendimento ou denúncia sanitária.
+                <span class="campo__obrigatorio" aria-hidden="true">*</span>
+              </label>
+            </div>
+
+            <button type="submit" class="botao botao--primario">Registrar feedback</button>
+
+            <p class="formulario__retorno" id="formulario-retorno" role="status" aria-live="polite" hidden></p>
+          </form>
+        </section>
+
+      </div>
+    </section>
+
+    <!-- ========================== ABA 4: BIBLIOTECA ========================== -->
+    <section class="painel" id="painel-biblioteca" role="tabpanel" aria-labelledby="aba-biblioteca" tabindex="0" hidden>
+      <div class="container secao-pagina">
+
+        <header class="pagina__cabecalho">
+          <p class="pagina__etiqueta">Acervo curado</p>
+          <h1 class="pagina__titulo">Biblioteca</h1>
+          <p class="pagina__descricao">
+            Fontes confiáveis, vídeos informativos e modelos de notícias e alertas.
+            Todo o conteúdo passa por curadoria humana.
+          </p>
+        </header>
+
+        <div class="filtros" role="group" aria-label="Filtrar conteúdo da biblioteca">
+          <button type="button" class="filtro is-ativo" data-filtro="fontes" aria-pressed="true">Fontes confiáveis</button>
+          <button type="button" class="filtro" data-filtro="videos" aria-pressed="false">Vídeos informativos</button>
+          <button type="button" class="filtro" data-filtro="noticias" aria-pressed="false">Notícias e alertas</button>
+        </div>
+
+        <p class="filtros__status" id="filtros-status" role="status" aria-live="polite">Exibindo: Fontes confiáveis</p>
+
+        <!-- Filtro 1: Fontes confiáveis -->
+        <div class="grupo-filtro" id="grupo-fontes" data-grupo="fontes">
+          <p class="grupo-filtro__nota">
+            Os links apontam para canais oficiais, apenas para fins informativos. A citação
+            <strong>não sugere parceria, endosso ou vínculo</strong> com as instituições.
+          </p>
+          <div class="grade grade--tres">
+            <article class="cartao cartao--fonte">
+              <h3 class="cartao__titulo">Ministério da Saúde / Saúde com Ciência</h3>
+              <p class="cartao__texto">Informação oficial em saúde, campanhas e conteúdos de ciência para o público geral.</p>
+              <a class="link-externo" href="https://www.gov.br/saude" target="_blank" rel="noopener noreferrer">
+                gov.br/saude
+                <span class="link-externo__icone" aria-hidden="true">↗</span>
+                <span class="visualmente-oculto">(abre em nova aba)</span>
+              </a>
+            </article>
+
+            <article class="cartao cartao--fonte">
+              <h3 class="cartao__titulo">Anvisa</h3>
+              <p class="cartao__texto">Regulação sanitária, registro de produtos, alertas e orientações oficiais.</p>
+              <a class="link-externo" href="https://www.gov.br/anvisa" target="_blank" rel="noopener noreferrer">
+                gov.br/anvisa
+                <span class="link-externo__icone" aria-hidden="true">↗</span>
+                <span class="visualmente-oculto">(abre em nova aba)</span>
+              </a>
+            </article>
+
+            <article class="cartao cartao--fonte">
+              <h3 class="cartao__titulo">CFN</h3>
+              <p class="cartao__texto">Conselho Federal de Nutricionistas: orientações e informações sobre a profissão.</p>
+              <a class="link-externo" href="https://www.cfn.org.br" target="_blank" rel="noopener noreferrer">
+                cfn.org.br
+                <span class="link-externo__icone" aria-hidden="true">↗</span>
+                <span class="visualmente-oculto">(abre em nova aba)</span>
+              </a>
+            </article>
+
+            <article class="cartao cartao--fonte">
+              <h3 class="cartao__titulo">CRN-7</h3>
+              <p class="cartao__texto">Conselho Regional de Nutricionistas da 7ª Região: informações regionais e fiscalização.</p>
+              <a class="link-externo" href="https://www.crn7.org.br" target="_blank" rel="noopener noreferrer">
+                crn7.org.br
+                <span class="link-externo__icone" aria-hidden="true">↗</span>
+                <span class="visualmente-oculto">(abre em nova aba)</span>
+              </a>
+            </article>
+
+            <article class="cartao cartao--fonte">
+              <h3 class="cartao__titulo">SciELO</h3>
+              <p class="cartao__texto">Biblioteca científica de acesso aberto com artigos revisados por pares.</p>
+              <a class="link-externo" href="https://www.scielo.br" target="_blank" rel="noopener noreferrer">
+                scielo.br
+                <span class="link-externo__icone" aria-hidden="true">↗</span>
+                <span class="visualmente-oculto">(abre em nova aba)</span>
+              </a>
+            </article>
+
+            <article class="cartao cartao--fonte">
+              <h3 class="cartao__titulo">PubMed</h3>
+              <p class="cartao__texto">Base internacional de literatura científica em saúde e áreas biomédicas.</p>
+              <a class="link-externo" href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" rel="noopener noreferrer">
+                pubmed.ncbi.nlm.nih.gov
+                <span class="link-externo__icone" aria-hidden="true">↗</span>
+                <span class="visualmente-oculto">(abre em nova aba)</span>
+              </a>
+            </article>
+          </div>
+        </div>
+
+        <!-- Filtro 2: Vídeos informativos -->
+        <div class="grupo-filtro" id="grupo-videos" data-grupo="videos" hidden>
+          <p class="grupo-filtro__nota">
+            <strong>Conteúdos previstos, ainda não publicados em massa.</strong> Os cartões
+            descrevem pautas planejadas de vídeo sob demanda. Não há autoplay nem incorporação
+            automática.
+          </p>
+          <div class="grade grade--tres">
+            <article class="cartao cartao--video">
+              <div class="cartao__midia" role="img" aria-label="Espaço reservado para vídeo: O que são canetas emagrecedoras">
+                <span class="cartao__play" aria-hidden="true">
+                  <svg width="34" height="34" viewBox="0 0 24 24" focusable="false">
+                    <path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor" />
+                  </svg>
+                </span>
+                <span class="cartao__midia-selo">Vídeo sob demanda</span>
+              </div>
+              <h3 class="cartao__titulo">O que são essas canetas?</h3>
+              <p class="cartao__texto">Pauta prevista: introdução educativa ao tema, sem recomendação de produtos.</p>
+              <p class="cartao__meta">Duração estimada: até 5 min</p>
+            </article>
+
+            <article class="cartao cartao--video">
+              <div class="cartao__midia" role="img" aria-label="Espaço reservado para vídeo: Como checar uma informação de saúde">
+                <span class="cartao__play" aria-hidden="true">
+                  <svg width="34" height="34" viewBox="0 0 24 24" focusable="false">
+                    <path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor" />
+                  </svg>
+                </span>
+                <span class="cartao__midia-selo">Vídeo sob demanda</span>
+              </div>
+              <h3 class="cartao__titulo">Como checar uma informação de saúde</h3>
+              <p class="cartao__texto">Pauta prevista: sinais de alerta em conteúdos de redes sociais e onde verificar.</p>
+              <p class="cartao__meta">Duração estimada: até 6 min</p>
+            </article>
+
+            <article class="cartao cartao--video">
+              <div class="cartao__midia" role="img" aria-label="Espaço reservado para vídeo: Procedência e registro sanitário">
+                <span class="cartao__play" aria-hidden="true">
+                  <svg width="34" height="34" viewBox="0 0 24 24" focusable="false">
+                    <path d="M8 5.5v13l11-6.5-11-6.5z" fill="currentColor" />
+                  </svg>
+                </span>
+                <span class="cartao__midia-selo">Vídeo sob demanda</span>
+              </div>
+              <h3 class="cartao__titulo">Procedência e registro sanitário</h3>
+              <p class="cartao__texto">Pauta prevista: como consultar registro e acompanhar alertas oficiais.</p>
+              <p class="cartao__meta">Duração estimada: até 5 min</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Filtro 3: Notícias e alertas -->
+        <div class="grupo-filtro" id="grupo-noticias" data-grupo="noticias" hidden>
+          <p class="grupo-filtro__nota">
+            <strong>Modelos de estrutura editorial.</strong> Os itens abaixo demonstram como
+            notícias, alertas sanitários e informações científicas serão apresentados, sempre com
+            curadoria humana e data em destaque. Não são notícias reais publicadas.
+          </p>
+          <div class="grade grade--tres">
+            <article class="cartao cartao--noticia">
+              <p class="noticia__tag">Modelo · Notícia</p>
+              <h3 class="cartao__titulo">Título da notícia em linguagem simples</h3>
+              <p class="cartao__texto">Resumo curto e objetivo do fato, com fonte oficial indicada e sem sensacionalismo.</p>
+              <p class="noticia__data">Publicação: <time datetime="2026-01-01">exemplo de data</time></p>
+            </article>
+
+            <article class="cartao cartao--noticia cartao--noticia-alerta">
+              <p class="noticia__tag noticia__tag--alerta">
+                <span class="icone-alerta" aria-hidden="true">!</span> Modelo · Alerta
+              </p>
+              <h3 class="cartao__titulo">Título do alerta sanitário</h3>
+              <p class="cartao__texto">Descrição do alerta, órgão emissor e orientação de como agir, com link para a fonte.</p>
+              <p class="noticia__data">Emissão: <time datetime="2026-01-01">exemplo de data</time></p>
+            </article>
+
+            <article class="cartao cartao--noticia">
+              <p class="noticia__tag">Modelo · Ciência</p>
+              <h3 class="cartao__titulo">Título de informação científica</h3>
+              <p class="cartao__texto">Síntese de um estudo ou tema científico, com contexto e limites da evidência.</p>
+              <p class="noticia__data">Atualização: <time datetime="2026-01-01">exemplo de data</time></p>
+            </article>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================ RODAPÉ ================================ -->
+  <footer class="rodape">
+    <div class="container rodape__interno">
+      <div class="rodape__marca">
+        <p class="rodape__titulo">Viva em Equilíbrio</p>
+        <p class="rodape__descricao">Portal educativo sobre informação em saúde, sem recomendação de produtos ou serviços.</p>
+      </div>
+
+      <nav class="rodape__nav" aria-label="Links do rodapé">
+        <ul class="rodape__lista">
+          <li><a href="#sobre" data-modal="sobre">Sobre o portal</a></li>
+          <li><a href="#fontes-modal" data-modal="fontes">Fontes</a></li>
+          <li><a href="#privacidade" data-modal="privacidade">Privacidade</a></li>
+          <li><a href="#contato" data-modal="contato">Contato editorial</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="container">
+      <p class="rodape__legal">
+        Conteúdo educativo. Não substitui avaliação de profissional habilitado. ©
+        <span id="ano-atual">2026</span> Viva em Equilíbrio.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ============================ DIÁLOGO RODAPÉ ============================ -->
+  <dialog class="dialogo" id="dialogo-rodape" aria-labelledby="dialogo-titulo">
+    <div class="dialogo__cabecalho">
+      <h2 class="dialogo__titulo" id="dialogo-titulo">Título</h2>
+      <button type="button" class="dialogo__fechar" id="dialogo-fechar" aria-label="Fechar diálogo">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+    <div class="dialogo__corpo" id="dialogo-corpo"></div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
