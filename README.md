@@ -27,7 +27,7 @@ vanilla, sem dependências, sem build e sem back-end — e é publicado no **Git
 | Marcação | HTML5 semântico + ARIA                                 |
 | Estilo   | CSS3 com variáveis customizadas (sem framework)        |
 | Script   | JavaScript vanilla (ES5-compatível, sem bibliotecas)   |
-| Deploy   | GitHub Pages via GitHub Actions                        |
+| Deploy   | Netlify (deploy contínuo a partir do GitHub)           |
 
 ## Estrutura
 
@@ -37,13 +37,11 @@ viva-em-equilibrio/
 ├─ styles.css                 # Identidade visual e responsividade
 ├─ script.js                  # Menu, abas, acordeões, quiz, filtros, formulário
 ├─ favicon.svg                # Ícone do site
+├─ netlify.toml               # Configuração de deploy e cabeçalhos de segurança
 ├─ README.md
 ├─ LICENSE                    # Contrato de licença (proprietário)
 ├─ .gitignore
-├─ .gitattributes             # Normaliza quebras de linha (LF)
-└─ .github/
-   └─ workflows/
-      └─ deploy.yml           # Publica no GitHub Pages a cada push na main
+└─ .gitattributes             # Normaliza quebras de linha (LF)
 ```
 
 ## Rodando localmente
@@ -107,22 +105,32 @@ da seção 5 de `script.js`.
 
 Ao alterar conteúdo, mantenha os atributos ARIA e os textos alternativos coerentes.
 
-## Publicação (GitHub Pages)
+## Publicação (Netlify)
 
-O deploy é automático pelo workflow `.github/workflows/deploy.yml`.
+O deploy é contínuo: cada push na branch `main` publica automaticamente.
 
-1. Envie as alterações para a branch `main`.
-2. O workflow empacota `index.html`, `styles.css`, `script.js` e `favicon.svg` e publica.
-3. O site fica disponível em `https://SEU-USUARIO.github.io/viva-em-equilibrio/`.
+**Primeira publicação (pelo painel):**
 
-Na **primeira vez**, é preciso habilitar o Pages uma vez:
+1. Acesse **app.netlify.com → Add new site → Import an existing project**.
+2. Escolha **GitHub** e autorize o acesso ao repositório `viva-em-equilibrio`.
+3. Configure:
+   - **Build command:** deixe vazio
+   - **Publish directory:** `.` (raiz do projeto)
+4. Clique em **Deploy site**. O site fica em `https://SEU-SITE.netlify.app`.
 
-1. No repositório, acesse **Settings → Pages**.
-2. Em **Build and deployment → Source**, escolha **GitHub Actions**.
-3. Faça um push na `main` (ou rode o workflow em **Actions → Publicar → Run workflow**).
+As configurações de build e os cabeçalhos de segurança já estão em `netlify.toml`,
+então o painel normalmente preenche tudo sozinho.
 
-> Ao adicionar novas pastas (ex.: `assets/`), atualize a lista de arquivos copiados no
-> passo "Preparar site" de `.github/workflows/deploy.yml`.
+**Deploy manual (sem Git), alternativa rápida:**
+
+1. Acesse **app.netlify.com → Add new site → Deploy manually**.
+2. Arraste a pasta do projeto para a área indicada.
+
+Para usar um domínio próprio, configure em **Site settings → Domain management**.
+
+> O GitHub Pages foi a opção inicial, mas estava indisponível neste repositório; por isso
+> o projeto usa o Netlify. O workflow do Pages foi removido para não gerar execuções
+> falhas a cada push.
 
 ## Fluxo de trabalho
 

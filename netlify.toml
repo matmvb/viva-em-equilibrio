@@ -1,0 +1,21 @@
+# Configuração do Netlify — Viva em Equilíbrio
+# Site estático (HTML/CSS/JS). Não há build.
+
+[build]
+  # Sem comando de build: publica os arquivos como estão.
+  publish = "."
+
+# Cabeçalhos de segurança aplicados a todas as páginas.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# Cache do favicon (não muda com frequência).
+[[headers]]
+  for = "/favicon.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
