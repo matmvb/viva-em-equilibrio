@@ -79,9 +79,6 @@
     var paineis = $$(".painel");
     if (!abas.length || !paineis.length) return;
 
-    var mapa = {};
-    abas.forEach(function (aba) { mapa[aba.id] = aba.getAttribute("aria-controls"); });
-
     function ativar(indice, moverFoco) {
       abas.forEach(function (aba, i) {
         var ativo = i === indice;
@@ -95,7 +92,9 @@
       try {
         window.history.replaceState(null, "", "#" + abas[indice].id);
       } catch (e) { /* ignora */ }
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      var reduzirMovimento = window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduzirMovimento ? "auto" : "smooth" });
 
       /* Fecha menu mobile após a escolha */
       var nav = $("#menu-principal");

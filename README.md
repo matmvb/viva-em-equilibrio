@@ -2,7 +2,7 @@
 
 Portal educativo sobre informação em saúde, com foco em medicamentos para controle de
 peso ("canetas emagrecedoras"). O site é **100% estático** — HTML5, CSS3 e JavaScript
-vanilla, sem dependências, sem build e sem back-end — e é publicado no **GitHub Pages**.
+vanilla, sem dependências, sem build e sem back-end — e é publicado no **Netlify**.
 
 > **Aviso educativo:** este portal tem finalidade educativa e não substitui consulta
 > médica, nutricional ou farmacêutica. Medicamentos para controle de peso exigem avaliação

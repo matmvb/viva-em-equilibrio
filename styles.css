@@ -77,6 +77,7 @@ body {
   background: var(--cor-branco);
   font-size: 1rem;
   overflow-x: hidden; /* garante ausência de rolagem horizontal */
+  overflow-x: clip;   /* clip preserva position: sticky em navegadores modernos */
 }
 
 img, svg, video { max-width: 100%; height: auto; display: block; }
@@ -255,11 +256,14 @@ ul, ol { margin: 0 0 var(--esp-4); padding-left: 1.25rem; }
 /* ------------------------------------------------------------------ */
 .painel { display: block; }
 .painel[hidden] { display: none; }
-.painel:focus { outline: none; }
+.painel:focus:not(:focus-visible) { outline: none; }
+.painel:focus-visible { outline: 3px solid var(--cor-foco); outline-offset: -3px; border-radius: var(--raio); }
 
 .secao-pagina { padding-block: var(--esp-7) var(--esp-8); }
 .secao { margin-bottom: var(--esp-8); }
 .secao:last-child { margin-bottom: var(--esp-6); }
+/* Evita que o cabeçalho fixo cubra os títulos ao navegar por âncoras */
+.secao[id] { scroll-margin-top: calc(var(--altura-topo) + 1.5rem); }
 
 .secao__cabecalho { max-width: 60ch; margin-bottom: var(--esp-5); }
 .secao__titulo { position: relative; padding-bottom: var(--esp-3); }
@@ -901,9 +905,10 @@ ul, ol { margin: 0 0 var(--esp-4); padding-left: 1.25rem; }
     box-shadow: 0 16px 30px var(--cor-sombra);
     max-height: 0;
     overflow: hidden;
-    transition: max-height var(--transicao);
+    visibility: hidden;
+    transition: max-height var(--transicao), visibility var(--transicao);
   }
-  .navegacao.is-aberta { max-height: 420px; }
+  .navegacao.is-aberta { max-height: 420px; visibility: visible; }
   .navegacao__lista { flex-direction: column; align-items: stretch; padding: var(--esp-2); gap: 2px; }
   .aba {
     width: 100%;
