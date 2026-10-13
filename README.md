@@ -40,6 +40,8 @@ viva-em-equilibrio/
 ├─ script.js                  # Menu, abas, acordeões, quiz, filtros, formulário
 ├─ favicon.svg                # Ícone do site
 ├─ og-image.png               # Imagem de compartilhamento (1200x630)
+├─ robots.txt                 # Diretrizes para mecanismos de busca
+├─ sitemap.xml                # Mapa do site para indexação
 ├─ netlify.toml               # Configuração de deploy, cabeçalhos e redirects
 ├─ README.md
 ├─ LICENSE                    # Contrato de licença (proprietário)

@@ -977,3 +977,65 @@ ul, ol { margin: 0 0 var(--esp-4); padding-left: 1.25rem; }
 .pagina-erro__titulo { margin-bottom: var(--esp-3); }
 .pagina-erro__texto { color: var(--cor-texto-suave); }
 .pagina-erro__acao { margin: var(--esp-5) 0 0; }
+
+/* ------------------------------------------------------------------ */
+/* 21. Melhorias de usabilidade (Média)                                */
+/* ------------------------------------------------------------------ */
+.subnav a.is-atual,
+.subnav a[aria-current="true"] {
+  background: var(--rosa-botao-escuro);
+  color: var(--cor-branco);
+  border-color: var(--rosa-botao-escuro);
+}
+
+.campo__ajuda { display: flex; flex-wrap: wrap; gap: var(--esp-2); justify-content: space-between; }
+.campo__contador {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--cor-texto-suave);
+  white-space: nowrap;
+}
+.campo__erro {
+  margin: 0;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--cor-alerta);
+}
+.campo__erro::before {
+  content: "⚠ ";
+  font-weight: 800;
+}
+.campo input[aria-invalid="true"],
+.campo select[aria-invalid="true"],
+.campo textarea[aria-invalid="true"] {
+  border-color: var(--cor-alerta);
+}
+
+.lista-alerta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--esp-3);
+}
+.lista-alerta li {
+  position: relative;
+  padding-left: 2rem;
+  color: var(--cor-texto);
+}
+.lista-alerta li::before {
+  content: "!";
+  position: absolute;
+  left: 0;
+  top: .1em;
+  width: 1.35rem;
+  height: 1.35rem;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: var(--cor-branco);
+  background: var(--cor-alerta);
+  border-radius: 50%;
+}
+
+.rodape__atualizacao { display: block; margin-top: var(--esp-2); color: #CFCFCF; font-size: .85rem; }

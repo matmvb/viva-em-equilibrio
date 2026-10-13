@@ -235,6 +235,7 @@
           <a href="#canetas-riscos">Riscos e Cuidados</a>
           <a href="#canetas-procedencia">Procedência</a>
           <a href="#canetas-mitos">Mitos e Verdades</a>
+          <a href="#canetas-alertas">Sinais de Alerta</a>
           <a href="#canetas-quiz">Quiz Educativo</a>
         </nav>
 
@@ -465,6 +466,28 @@
           </div>
         </section>
 
+        <!-- Sinais de alerta -->
+        <section class="secao" id="canetas-alertas" aria-labelledby="titulo-alertas">
+          <header class="secao__cabecalho">
+            <h2 class="secao__titulo" id="titulo-alertas">Sinais de alerta nas redes</h2>
+            <p class="secao__descricao">
+              Se uma publicação usa um destes recursos, trate com desconfiança e busque
+              informação em fontes confiáveis antes de qualquer decisão.
+            </p>
+          </header>
+
+          <ul class="lista-alerta">
+            <li>Promessa de resultado rápido, garantido ou “sem esforço”.</li>
+            <li>“Antes e depois” apresentado como única prova.</li>
+            <li>Venda direta por mensagem privada, sem estabelecimento licenciado nem nota fiscal.</li>
+            <li>Senso de urgência: “últimas unidades”, “só hoje”.</li>
+            <li>Produto sem registro sanitário, com lote ilegível ou embalagem violada.</li>
+            <li>Depoimento de influenciador tratado como prova de segurança.</li>
+            <li>Ausência de fonte científica e de identificação de profissional habilitado.</li>
+            <li>Promessa de “fórmula secreta” ou manipulação sem prescrição.</li>
+          </ul>
+        </section>
+
         <!-- Quiz Educativo -->
         <section class="secao secao--quiz" id="canetas-quiz" aria-labelledby="titulo-quiz">
           <header class="secao__cabecalho">
@@ -619,6 +642,26 @@
           </ul>
         </section>
 
+        <!-- Onde buscar ajuda e denunciar -->
+        <section class="secao secao--destaque" aria-labelledby="titulo-denunciar">
+          <header class="secao__cabecalho">
+            <h2 class="secao__titulo" id="titulo-denunciar">Onde buscar ajuda e denunciar</h2>
+            <p class="secao__descricao">
+              Este portal não é canal de atendimento nem de denúncia. Para essas situações,
+              use os canais oficiais.
+            </p>
+          </header>
+
+          <ul class="lista-marcada">
+            <li><strong>Dúvidas de saúde:</strong> procure a equipe de saúde responsável ou uma unidade de saúde.</li>
+            <li><strong>Disque Saúde — 136:</strong> canal oficial de informações do Ministério da Saúde.</li>
+            <li><strong>Anvisa:</strong> alertas sanitários e informação sobre registro de produtos
+              (<a class="link-externo" href="https://www.gov.br/anvisa" target="_blank" rel="noopener noreferrer">gov.br/anvisa<span class="link-externo__icone" aria-hidden="true">↗</span><span class="visualmente-oculto">(abre em nova aba)</span></a>).</li>
+            <li><strong>Conselhos profissionais:</strong> dúvidas sobre a atuação de um profissional podem ser encaminhadas ao conselho da categoria.</li>
+            <li><strong>Defesa do consumidor:</strong> em problemas de compra, registre reclamação no Procon ou na plataforma consumidor.gov.br.</li>
+          </ul>
+        </section>
+
         <!-- Formulário de opinião (estático) -->
         <section class="secao" aria-labelledby="titulo-opiniao">
           <header class="secao__cabecalho">
@@ -632,33 +675,38 @@
           <form class="formulario" id="formulario-opiniao" novalidate>
             <div class="campo">
               <label for="op-tipo">Tipo de mensagem</label>
-              <select id="op-tipo" name="tipo" required>
+              <select id="op-tipo" name="tipo" required aria-describedby="erro-tipo">
                 <option value="" selected disabled>Selecione uma opção</option>
                 <option value="sugestao">Sugestão de conteúdo</option>
                 <option value="duvida">Dúvida sobre navegação</option>
                 <option value="acessibilidade">Relato de acessibilidade</option>
                 <option value="outro">Outro assunto não clínico</option>
               </select>
+              <p class="campo__erro" id="erro-tipo" hidden></p>
             </div>
 
             <div class="campo">
               <label for="op-mensagem">Mensagem <span class="campo__obrigatorio" aria-hidden="true">*</span></label>
               <textarea id="op-mensagem" name="mensagem" rows="5" required
-                aria-describedby="ajuda-mensagem"
+                aria-describedby="ajuda-mensagem erro-mensagem"
                 placeholder="Escreva sua sugestão. Não inclua dados pessoais nem informações de saúde."></textarea>
               <p class="campo__ajuda" id="ajuda-mensagem">
                 Máximo de 500 caracteres. Não compartilhe dados clínicos, exames ou receitas.
+                <span class="campo__contador" id="contador-mensagem">0/500</span>
               </p>
+              <p class="campo__erro" id="erro-mensagem" hidden></p>
             </div>
 
             <div class="campo campo--check">
-              <input type="checkbox" id="op-consentimento" name="consentimento" required />
+              <input type="checkbox" id="op-consentimento" name="consentimento" required
+                aria-describedby="erro-consentimento" />
               <label for="op-consentimento">
                 Entendo que este formulário é estático, educativo e não representa canal de
                 atendimento ou denúncia sanitária.
                 <span class="campo__obrigatorio" aria-hidden="true">*</span>
               </label>
             </div>
+            <p class="campo__erro" id="erro-consentimento" hidden></p>
 
             <button type="submit" class="botao botao--primario">Registrar feedback</button>
 
@@ -871,6 +919,9 @@
       <p class="rodape__legal">
         Conteúdo educativo. Não substitui avaliação de profissional habilitado. ©
         <span id="ano-atual">2026</span> Viva em Equilíbrio.
+        <span class="rodape__atualizacao">
+          Última atualização: <time datetime="2026-10-13">13 de outubro de 2026</time>.
+        </span>
       </p>
     </div>
   </footer>

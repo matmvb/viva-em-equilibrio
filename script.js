@@ -79,7 +79,7 @@
     var paineis = $$(".painel");
     if (!abas.length || !paineis.length) return;
 
-    function ativar(indice, moverFoco) {
+    function selecionar(indice) {
       abas.forEach(function (aba, i) {
         var ativo = i === indice;
         aba.setAttribute("aria-selected", ativo ? "true" : "false");
@@ -87,6 +87,10 @@
         var painel = document.getElementById(aba.getAttribute("aria-controls"));
         if (painel) painel.hidden = !ativo;
       });
+    }
+
+    function ativar(indice, moverFoco) {
+      selecionar(indice);
       if (moverFoco) abas[indice].focus();
       /* atualiza URL sem provocar rolagem */
       try {
@@ -132,24 +136,29 @@
       });
     });
 
-    /* Abre a aba correta conforme o hash da URL */
+    /* Abre a aba correta conforme o hash da URL (aba ou subárea) */
     var hash = window.location.hash.replace("#", "");
     var indiceInicial = abas.findIndex(function (a) { return a.id === hash; });
     if (indiceInicial < 0 && hash) {
-      /* Subáreas internas (ex.: #canetas-visao) abrem a aba "canetas" */
-      var sub = ["canetas-visao", "canetas-riscos", "canetas-procedencia", "canetas-mitos", "canetas-quiz"];
-      if (sub.indexOf(hash) >= 0) {
-        indiceInicial = abas.findIndex(function (a) { return a.id === "aba-canetas"; });
+      var alvoSub = document.getElementById(hash);
+      if (alvoSub && alvoSub.closest) {
+        var painelPai = alvoSub.closest(".painel");
+        if (painelPai) {
+          indiceInicial = abas.findIndex(function (a) {
+            return a.getAttribute("aria-controls") === painelPai.id;
+          });
+        }
       }
     }
-    if (indiceInicial >= 0) {
-      abas.forEach(function (aba, i) {
-        var ativo = i === indiceInicial;
-        aba.setAttribute("aria-selected", ativo ? "true" : "false");
-        aba.tabIndex = ativo ? 0 : -1;
-        var painel = document.getElementById(aba.getAttribute("aria-controls"));
-        if (painel) painel.hidden = !ativo;
-      });
+    if (indiceInicial < 0) indiceInicial = 0;
+    selecionar(indiceInicial);
+
+    /* Se o hash aponta para uma subárea, rola até ela */
+    if (hash) {
+      var destinoSub = document.getElementById(hash);
+      if (destinoSub && destinoSub.id !== abas[indiceInicial].id) {
+        window.requestAnimationFrame(function () { destinoSub.scrollIntoView(); });
+      }
     }
   }
 
@@ -168,6 +177,40 @@
         });
       });
     });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* 4b. Submenu: destaca a subárea visível (scrollspy)                 */
+  /* ------------------------------------------------------------------ */
+  function initSubnav() {
+    var links = $$(".subnav a");
+    if (!links.length || !("IntersectionObserver" in window)) return;
+
+    var mapa = {};
+    links.forEach(function (l) {
+      var id = (l.getAttribute("href") || "").replace("#", "");
+      var secao = document.getElementById(id);
+      if (secao) mapa[id] = l;
+    });
+    var secoes = Object.keys(mapa).map(function (id) { return document.getElementById(id); });
+    if (!secoes.length) return;
+
+    function marcar(id) {
+      links.forEach(function (l) {
+        var atual = l === mapa[id];
+        if (atual) l.setAttribute("aria-current", "true");
+        else l.removeAttribute("aria-current");
+        l.classList.toggle("is-atual", atual);
+      });
+    }
+
+    var observador = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (e) {
+        if (e.isIntersecting) marcar(e.target.id);
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+
+    secoes.forEach(function (s) { observador.observe(s); });
   }
 
   /* ------------------------------------------------------------------ */
@@ -364,44 +407,65 @@
     if (!form || !retorno) return;
 
     var LIMITE = 500;
+    var tipo = $("#op-tipo");
+    var mensagem = $("#op-mensagem");
+    var consentimento = $("#op-consentimento");
+    var contador = $("#contador-mensagem");
+
+    function definirErro(campo, idErro, msg) {
+      if (!campo) return;
+      var alvo = document.getElementById(idErro);
+      if (msg) {
+        campo.setAttribute("aria-invalid", "true");
+        if (alvo) { alvo.textContent = msg; alvo.hidden = false; }
+      } else {
+        campo.removeAttribute("aria-invalid");
+        if (alvo) { alvo.textContent = ""; alvo.hidden = true; }
+      }
+    }
+
+    function atualizarContador() {
+      if (contador && mensagem) contador.textContent = mensagem.value.length + "/" + LIMITE;
+    }
+
+    if (mensagem) {
+      atualizarContador();
+      mensagem.addEventListener("input", function () {
+        if (mensagem.value.length > LIMITE) mensagem.value = mensagem.value.slice(0, LIMITE);
+        atualizarContador();
+        if (mensagem.value.trim()) definirErro(mensagem, "erro-mensagem", "");
+      });
+    }
+    if (tipo) {
+      tipo.addEventListener("change", function () {
+        if (tipo.value) definirErro(tipo, "erro-tipo", "");
+      });
+    }
+    if (consentimento) {
+      consentimento.addEventListener("change", function () {
+        if (consentimento.checked) definirErro(consentimento, "erro-consentimento", "");
+      });
+    }
 
     form.addEventListener("submit", function (ev) {
       ev.preventDefault();
+      var erros = 0;
 
-      var tipo = $("#op-tipo");
-      var mensagem = $("#op-mensagem");
-      var consentimento = $("#op-consentimento");
-      var erros = [];
+      if (!tipo.value) { definirErro(tipo, "erro-tipo", "Selecione um tipo de mensagem."); erros++; }
+      else definirErro(tipo, "erro-tipo", "");
 
-      if (!tipo.value) {
-        erros.push("Selecione um tipo de mensagem.");
-        tipo.setAttribute("aria-invalid", "true");
-      } else {
-        tipo.removeAttribute("aria-invalid");
-      }
+      if (!mensagem.value.trim()) { definirErro(mensagem, "erro-mensagem", "Escreva uma mensagem."); erros++; }
+      else if (mensagem.value.length > LIMITE) { definirErro(mensagem, "erro-mensagem", "A mensagem deve ter no máximo " + LIMITE + " caracteres."); erros++; }
+      else definirErro(mensagem, "erro-mensagem", "");
 
-      if (!mensagem.value.trim()) {
-        erros.push("Escreva uma mensagem.");
-        mensagem.setAttribute("aria-invalid", "true");
-      } else if (mensagem.value.length > LIMITE) {
-        erros.push("A mensagem deve ter no máximo " + LIMITE + " caracteres.");
-        mensagem.setAttribute("aria-invalid", "true");
-      } else {
-        mensagem.removeAttribute("aria-invalid");
-      }
-
-      if (!consentimento.checked) {
-        erros.push("Confirme o aviso de que este formulário é estático e educativo.");
-        consentimento.setAttribute("aria-invalid", "true");
-      } else {
-        consentimento.removeAttribute("aria-invalid");
-      }
+      if (!consentimento.checked) { definirErro(consentimento, "erro-consentimento", "Confirme o aviso de que este formulário é estático e educativo."); erros++; }
+      else definirErro(consentimento, "erro-consentimento", "");
 
       retorno.hidden = false;
 
-      if (erros.length) {
+      if (erros) {
         retorno.className = "formulario__retorno formulario__retorno--erro";
-        retorno.textContent = "Verifique os campos: " + erros.join(" ");
+        retorno.textContent = "Não foi possível registrar: verifique os campos destacados.";
         var primeiroInvalido = $('[aria-invalid="true"]', form);
         if (primeiroInvalido) primeiroInvalido.focus();
         return;
@@ -412,18 +476,9 @@
       retorno.textContent = "Obrigado! Este formulário é apenas educativo: nada foi enviado nem armazenado. " +
         "Para dúvidas clínicas ou denúncias sanitárias, procure os canais oficiais indicados na Biblioteca.";
       form.reset();
+      atualizarContador();
       retorno.focus();
     });
-
-    /* Contador simples de caracteres como apoio */
-    var mensagem = $("#op-mensagem");
-    if (mensagem) {
-      mensagem.addEventListener("input", function () {
-        if (mensagem.value.length > LIMITE) {
-          mensagem.value = mensagem.value.slice(0, LIMITE);
-        }
-      });
-    }
   }
 
   /* ------------------------------------------------------------------ */
@@ -511,6 +566,7 @@
     initMenu();
     initAbas();
     initAcordeoes();
+    initSubnav();
     initQuiz();
     initFiltros();
     initFormulario();
