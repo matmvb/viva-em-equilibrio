@@ -34,10 +34,11 @@ vanilla, sem dependências, sem build e sem back-end — e é publicado no **Net
 ```
 viva-em-equilibrio/
 ├─ index.html                 # Página única com as 4 abas
+├─ 404.html                   # Página de erro (também usada para ocultar arquivos internos)
 ├─ styles.css                 # Identidade visual e responsividade
 ├─ script.js                  # Menu, abas, acordeões, quiz, filtros, formulário
 ├─ favicon.svg                # Ícone do site
-├─ netlify.toml               # Configuração de deploy e cabeçalhos de segurança
+├─ netlify.toml               # Configuração de deploy, cabeçalhos e redirects
 ├─ README.md
 ├─ LICENSE                    # Contrato de licença (proprietário)
 ├─ .gitignore
@@ -122,6 +123,9 @@ O deploy é contínuo: cada push na branch `main` publica automaticamente.
 
 As configurações de build e os cabeçalhos de segurança já estão em `netlify.toml`,
 então o painel normalmente preenche tudo sozinho.
+
+Arquivos internos (`README.md` e `LICENSE`) não são publicados: o `netlify.toml` os
+redireciona para a página `404.html`.
 
 **Deploy manual (sem Git), alternativa rápida:**
 
