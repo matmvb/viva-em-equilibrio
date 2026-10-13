@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://viva-em-equilibrio.pages.dev/sitemap.xml
+Sitemap: https://viva-em-equilibrio.scoty-mat.workers.dev/sitemap.xml

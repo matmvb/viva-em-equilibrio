@@ -19,6 +19,10 @@ ehthumbs.db
 # Dependências (caso sejam adicionadas ferramentas de dev no futuro)
 node_modules/
 
+# Artefatos de build e do Cloudflare
+dist/
+.wrangler/
+
 # Ambiente
 .env
 .env.*

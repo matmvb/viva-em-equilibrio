@@ -43,8 +43,8 @@ viva-em-equilibrio/
 ├─ og-image.png               # Imagem de compartilhamento (1200x630)
 ├─ robots.txt                 # Diretrizes para mecanismos de busca
 ├─ sitemap.xml                # Mapa do site para indexação
+├─ build.js                   # Gera a pasta dist/ (arquivos publicados)
 ├─ _headers                   # Cabeçalhos de segurança e cache (Cloudflare Pages)
-├─ _redirects                 # Regras de redirecionamento (bloqueia arquivos internos)
 ├─ README.md
 ├─ LICENSE                    # Contrato de licença (proprietário)
 ├─ .gitignore
@@ -112,11 +112,16 @@ da seção 5 de `script.js`.
 
 Ao alterar conteúdo, mantenha os atributos ARIA e os textos alternativos coerentes.
 
-## Publicação (Cloudflare Pages)
+## Publicação (Cloudflare)
 
-**Site publicado:** <https://viva-em-equilibrio.pages.dev/>
+**Site publicado:** <https://viva-em-equilibrio.scoty-mat.workers.dev/>
 
 O deploy é contínuo: cada push na branch `main` publica automaticamente.
+
+**Como o build funciona:** o `build.js` gera a pasta `dist/` apenas com os arquivos do
+site (sem `LICENSE`, `README.md`, pastas internas como `.git`). O `_headers` é copiado e
+aplicado pelo Cloudflare; sem ele não haveria bloqueio de arquivos internos, pois o
+pipeline não aceita status 404 em `_redirects`.
 
 **Primeira publicação (pelo painel):**
 
@@ -127,23 +132,19 @@ O deploy é contínuo: cada push na branch `main` publica automaticamente.
    - **Project name:** `viva-em-equilibrio`
    - **Production branch:** `main`
    - **Framework preset:** *None*
-   - **Build command:** deixe vazio
-   - **Build output directory:** `/` (raiz do projeto)
+   - **Build command:** `node build.js`
+   - **Build output directory:** `dist`
 4. Clique em **Save and Deploy**. O site fica em
-   `https://viva-em-equilibrio.pages.dev`.
-
-Os cabeçalhos de segurança e o cache do favicon estão em `_headers`; o bloqueio dos
-arquivos internos (`README.md` e `LICENSE`, redirecionados para a página `404.html`) está
-em `_redirects`.
+   `https://viva-em-equilibrio.scoty-mat.workers.dev`.
 
 **Importante:** as URLs absolutas (canonical, Open Graph, sitemap) usam
-`viva-em-equilibrio.pages.dev`. Se o subdomínio escolhido for diferente, atualize o
+`viva-em-equilibrio.scoty-mat.workers.dev`. Se o nome do worker mudar, atualize o
 `index.html`, o `robots.txt` e o `sitemap.xml`.
 
 **Deploy manual (sem Git), alternativa rápida:**
 
 1. Acesse **dash.cloudflare.com → Workers & Pages → Create**.
-2. Escolha **Pages → Upload Assets** e arraste a pasta do projeto.
+2. Escolha **Upload Assets** e arraste a pasta `dist/` (após rodar `node build.js`).
 
 Para usar um domínio próprio depois, configure em **Custom domains** no painel do projeto.
 
