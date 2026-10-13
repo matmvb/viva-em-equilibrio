@@ -27,7 +27,7 @@
   /* Neutros de apoio */
   --cor-fundo: #FFF9FB;
   --cor-borda: #E7C9D6;
-  --cor-borda-forte: #C99BB2;
+  --cor-borda-forte: #9C6E83;    /* bordas de controles: contraste >= 3:1 (WCAG 1.4.11) */
   --cor-texto-suave: #4A4A4A;
   --cor-sombra: rgba(32, 32, 32, .10);
   --cor-sombra-forte: rgba(32, 32, 32, .18);

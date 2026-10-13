@@ -1,0 +1,13 @@
+/* ==========================================================================
+   Viva em Equilíbrio — noscript.css
+   Carregado apenas por <noscript> (JavaScript desativado).
+   Garante acesso a todo o conteúdo das abas sem depender de script.
+   ========================================================================== */
+
+/* Revela todos os painéis (antes ocultos por [hidden]). */
+.painel[hidden] { display: block; }
+
+/* A navegação por abas depende de JavaScript: sem ele, escondê-la evita
+   controles inativos; o conteúdo é lido em sequência. */
+.navegacao,
+.hamburguer { display: none; }

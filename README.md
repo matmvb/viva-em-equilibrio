@@ -36,8 +36,10 @@ viva-em-equilibrio/
 ├─ index.html                 # Página única com as 4 abas
 ├─ 404.html                   # Página de erro (também usada para ocultar arquivos internos)
 ├─ styles.css                 # Identidade visual e responsividade
+├─ noscript.css               # Fallback quando o JavaScript está desativado
 ├─ script.js                  # Menu, abas, acordeões, quiz, filtros, formulário
 ├─ favicon.svg                # Ícone do site
+├─ og-image.png               # Imagem de compartilhamento (1200x630)
 ├─ netlify.toml               # Configuração de deploy, cabeçalhos e redirects
 ├─ README.md
 ├─ LICENSE                    # Contrato de licença (proprietário)
