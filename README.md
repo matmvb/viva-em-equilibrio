@@ -44,7 +44,8 @@ viva-em-equilibrio/
 ├─ robots.txt                 # Diretrizes para mecanismos de busca
 ├─ sitemap.xml                # Mapa do site para indexação
 ├─ build.js                   # Gera a pasta dist/ (arquivos publicados)
-├─ _headers                   # Cabeçalhos de segurança e cache (Cloudflare Pages)
+├─ wrangler.jsonc             # Config do Cloudflare (assets.directory = ./dist)
+├─ _headers                   # Cabeçalhos de segurança e cache (Cloudflare)
 ├─ README.md
 ├─ LICENSE                    # Contrato de licença (proprietário)
 ├─ .gitignore
@@ -119,21 +120,21 @@ Ao alterar conteúdo, mantenha os atributos ARIA e os textos alternativos coeren
 O deploy é contínuo: cada push na branch `main` publica automaticamente.
 
 **Como o build funciona:** o `build.js` gera a pasta `dist/` apenas com os arquivos do
-site (sem `LICENSE`, `README.md`, pastas internas como `.git`). O `_headers` é copiado e
-aplicado pelo Cloudflare; sem ele não haveria bloqueio de arquivos internos, pois o
-pipeline não aceita status 404 em `_redirects`.
+site (sem `LICENSE`, `README.md`, pastas internas como `.git`). O `wrangler.jsonc` define
+`assets.directory = ./dist`, então só essa pasta é publicada; o `_headers` é copiado e
+aplicado pelo Cloudflare, e `not_found_handling = 404-page` serve o `404.html`.
 
 **Primeira publicação (pelo painel):**
 
 1. Acesse **dash.cloudflare.com → Workers & Pages → Create**.
-2. Escolha **Pages → Connect to Git**, selecione **GitHub** e autorize o acesso ao
+2. Escolha **Connect to Git**, selecione **GitHub** e autorize o acesso ao
    repositório `viva-em-equilibrio`.
 3. Configure:
-   - **Project name:** `viva-em-equilibrio`
+   - **Project name / Worker name:** `viva-em-equilibrio`
    - **Production branch:** `main`
-   - **Framework preset:** *None*
+   - **Root directory:** `.`
    - **Build command:** `node build.js`
-   - **Build output directory:** `dist`
+   - **Deploy command:** `npx wrangler deploy`
 4. Clique em **Save and Deploy**. O site fica em
    `https://viva-em-equilibrio.scoty-mat.workers.dev`.
 
