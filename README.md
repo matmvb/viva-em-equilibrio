@@ -142,9 +142,6 @@ Para usar um domínio próprio, configure em **Site settings → Domain manageme
 
 ## Licença e titularidade
 
-© 2026 **\[NOME DO CLIENTE\]** — Todos os direitos reservados.
+© 2026 **Agatha de Oliveira** — Todos os direitos reservados.
 Trata-se de obra sob encomenda; o uso, a cópia e a distribuição são restritos ao titular.
 Consulte o arquivo [`LICENSE`](LICENSE).
-
-> **AÇÃO NECESSÁRIA:** substitua `[NOME DO CLIENTE]` em `LICENSE` pelo nome/razão social
-> correto do titular antes de entregar o projeto.
