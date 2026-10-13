@@ -198,7 +198,7 @@
     function marcar(id) {
       links.forEach(function (l) {
         var atual = l === mapa[id];
-        if (atual) l.setAttribute("aria-current", "true");
+        if (atual) l.setAttribute("aria-current", "location");
         else l.removeAttribute("aria-current");
         l.classList.toggle("is-atual", atual);
       });

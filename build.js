@@ -16,6 +16,7 @@ var ARQUIVOS = [
   "_headers"
 ];
 
+fs.rmSync(DESTINO, { recursive: true, force: true });
 fs.mkdirSync(DESTINO, { recursive: true });
 ARQUIVOS.forEach(function (arquivo) {
   fs.copyFileSync(path.join(ORIGEM, arquivo), path.join(DESTINO, arquivo));

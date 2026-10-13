@@ -2,8 +2,8 @@
 
 Portal educativo sobre informação em saúde, com foco em medicamentos para controle de
 peso ("canetas emagrecedoras"). O site é **100% estático** — HTML5, CSS3 e JavaScript
-vanilla, sem dependências, sem build e sem back-end — e é publicado no **Cloudflare
-Pages**.
+vanilla, sem dependências e sem back-end — e é publicado no **Cloudflare Workers**
+(static assets).
 
 > **Aviso educativo:** este portal tem finalidade educativa e não substitui consulta
 > médica, nutricional ou farmacêutica. Medicamentos para controle de peso exigem avaliação
@@ -27,8 +27,8 @@ Pages**.
 | -------- | ------------------------------------------------------ |
 | Marcação | HTML5 semântico + ARIA                                 |
 | Estilo   | CSS3 com variáveis customizadas (sem framework)        |
-| Script   | JavaScript vanilla (ES5-compatível, sem bibliotecas)   |
-| Deploy   | Cloudflare Pages (deploy contínuo a partir do GitHub) |
+| Script   | JavaScript vanilla (ES5/ES6, sem bibliotecas)          |
+| Deploy   | Cloudflare Workers — static assets (deploy contínuo)  |
 
 ## Estrutura
 
@@ -54,7 +54,8 @@ viva-em-equilibrio/
 
 ## Rodando localmente
 
-Não há instalação nem build. Basta abrir o arquivo no navegador:
+Não há instalação nem dependências para visualizar o site. Basta abrir o arquivo no
+navegador:
 
 ```powershell
 # Windows
@@ -113,7 +114,7 @@ da seção 5 de `script.js`.
 
 Ao alterar conteúdo, mantenha os atributos ARIA e os textos alternativos coerentes.
 
-## Publicação (Cloudflare)
+## Publicação (Cloudflare Workers)
 
 **Site publicado:** <https://viva-em-equilibrio.scoty-mat.workers.dev/>
 
@@ -124,17 +125,16 @@ site (sem `LICENSE`, `README.md`, pastas internas como `.git`). O `wrangler.json
 `assets.directory = ./dist`, então só essa pasta é publicada; o `_headers` é copiado e
 aplicado pelo Cloudflare, e `not_found_handling = 404-page` serve o `404.html`.
 
-**Primeira publicação (pelo painel):**
+**Primeira publicação (Workers Builds):**
 
 1. Acesse **dash.cloudflare.com → Workers & Pages → Create**.
 2. Escolha **Connect to Git**, selecione **GitHub** e autorize o acesso ao
    repositório `viva-em-equilibrio`.
-3. Configure:
-   - **Project name / Worker name:** `viva-em-equilibrio`
-   - **Production branch:** `main`
-   - **Root directory:** `.`
+3. Configure (o painel de Workers Builds tem apenas três campos):
    - **Build command:** `node build.js`
    - **Deploy command:** `npx wrangler deploy`
+   - **Root directory:** `.`
+   O nome do Worker (`viva-em-equilibrio`) vem do `wrangler.jsonc`.
 4. Clique em **Save and Deploy**. O site fica em
    `https://viva-em-equilibrio.scoty-mat.workers.dev`.
 
@@ -150,8 +150,8 @@ aplicado pelo Cloudflare, e `not_found_handling = 404-page` serve o `404.html`.
 Para usar um domínio próprio depois, configure em **Custom domains** no painel do projeto.
 
 > O GitHub Pages foi a opção inicial, mas estava indisponível neste repositório; depois o
-> projeto migrou do Netlify para o Cloudflare Pages, que tem CDN global gratuita sem
-> limite de banda.
+> projeto migrou do Netlify para o Cloudflare Workers (static assets), que tem CDN global
+> gratuita sem limite de banda.
 
 ## Fluxo de trabalho
 
