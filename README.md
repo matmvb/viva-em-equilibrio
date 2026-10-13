@@ -2,7 +2,8 @@
 
 Portal educativo sobre informação em saúde, com foco em medicamentos para controle de
 peso ("canetas emagrecedoras"). O site é **100% estático** — HTML5, CSS3 e JavaScript
-vanilla, sem dependências, sem build e sem back-end — e é publicado no **Netlify**.
+vanilla, sem dependências, sem build e sem back-end — e é publicado no **Cloudflare
+Pages**.
 
 > **Aviso educativo:** este portal tem finalidade educativa e não substitui consulta
 > médica, nutricional ou farmacêutica. Medicamentos para controle de peso exigem avaliação
@@ -27,7 +28,7 @@ vanilla, sem dependências, sem build e sem back-end — e é publicado no **Net
 | Marcação | HTML5 semântico + ARIA                                 |
 | Estilo   | CSS3 com variáveis customizadas (sem framework)        |
 | Script   | JavaScript vanilla (ES5-compatível, sem bibliotecas)   |
-| Deploy   | Netlify (deploy contínuo a partir do GitHub)           |
+| Deploy   | Cloudflare Pages (deploy contínuo a partir do GitHub) |
 
 ## Estrutura
 
@@ -42,7 +43,8 @@ viva-em-equilibrio/
 ├─ og-image.png               # Imagem de compartilhamento (1200x630)
 ├─ robots.txt                 # Diretrizes para mecanismos de busca
 ├─ sitemap.xml                # Mapa do site para indexação
-├─ netlify.toml               # Configuração de deploy, cabeçalhos e redirects
+├─ _headers                   # Cabeçalhos de segurança e cache (Cloudflare Pages)
+├─ _redirects                 # Regras de redirecionamento (bloqueia arquivos internos)
 ├─ README.md
 ├─ LICENSE                    # Contrato de licença (proprietário)
 ├─ .gitignore
@@ -110,37 +112,44 @@ da seção 5 de `script.js`.
 
 Ao alterar conteúdo, mantenha os atributos ARIA e os textos alternativos coerentes.
 
-## Publicação (Netlify)
+## Publicação (Cloudflare Pages)
 
-**Site publicado:** <https://viva-em-equilibrio.netlify.app/>
+**Site publicado:** <https://viva-em-equilibrio.pages.dev/>
 
 O deploy é contínuo: cada push na branch `main` publica automaticamente.
 
 **Primeira publicação (pelo painel):**
 
-1. Acesse **app.netlify.com → Add new site → Import an existing project**.
-2. Escolha **GitHub** e autorize o acesso ao repositório `viva-em-equilibrio`.
+1. Acesse **dash.cloudflare.com → Workers & Pages → Create**.
+2. Escolha **Pages → Connect to Git**, selecione **GitHub** e autorize o acesso ao
+   repositório `viva-em-equilibrio`.
 3. Configure:
+   - **Project name:** `viva-em-equilibrio`
+   - **Production branch:** `main`
+   - **Framework preset:** *None*
    - **Build command:** deixe vazio
-   - **Publish directory:** `.` (raiz do projeto)
-4. Clique em **Deploy site**. O site fica em `https://viva-em-equilibrio.netlify.app`.
+   - **Build output directory:** `/` (raiz do projeto)
+4. Clique em **Save and Deploy**. O site fica em
+   `https://viva-em-equilibrio.pages.dev`.
 
-As configurações de build e os cabeçalhos de segurança já estão em `netlify.toml`,
-então o painel normalmente preenche tudo sozinho.
+Os cabeçalhos de segurança e o cache do favicon estão em `_headers`; o bloqueio dos
+arquivos internos (`README.md` e `LICENSE`, redirecionados para a página `404.html`) está
+em `_redirects`.
 
-Arquivos internos (`README.md` e `LICENSE`) não são publicados: o `netlify.toml` os
-redireciona para a página `404.html`.
+**Importante:** as URLs absolutas (canonical, Open Graph, sitemap) usam
+`viva-em-equilibrio.pages.dev`. Se o subdomínio escolhido for diferente, atualize o
+`index.html`, o `robots.txt` e o `sitemap.xml`.
 
 **Deploy manual (sem Git), alternativa rápida:**
 
-1. Acesse **app.netlify.com → Add new site → Deploy manually**.
-2. Arraste a pasta do projeto para a área indicada.
+1. Acesse **dash.cloudflare.com → Workers & Pages → Create**.
+2. Escolha **Pages → Upload Assets** e arraste a pasta do projeto.
 
-Para usar um domínio próprio, configure em **Site settings → Domain management**.
+Para usar um domínio próprio depois, configure em **Custom domains** no painel do projeto.
 
-> O GitHub Pages foi a opção inicial, mas estava indisponível neste repositório; por isso
-> o projeto usa o Netlify. O workflow do Pages foi removido para não gerar execuções
-> falhas a cada push.
+> O GitHub Pages foi a opção inicial, mas estava indisponível neste repositório; depois o
+> projeto migrou do Netlify para o Cloudflare Pages, que tem CDN global gratuita sem
+> limite de banda.
 
 ## Fluxo de trabalho
 
